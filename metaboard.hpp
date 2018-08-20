@@ -16,12 +16,14 @@ public:
 	MyBoard();
 };
 
+// Class for MetaBoards
 class MetaBoard
 {
 private:
 public:
 	int xwins = 0;
 	int owins = 0;
+	// This member variable establish the 9 individual boards
 	MyBoard * games[9];
 	int CheckWin();
 	int CheckDraw();
