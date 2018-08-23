@@ -9,13 +9,13 @@ SRCS = metatictactoe.cpp metagame.cpp board.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-all: tictactoe
+all: metatictactoe
 
-tictactoe: $(OBJS)
+metatictactoe: $(OBJS)
 	g++ -o $@ $^ $(LDFLAGS)
 
 %.o : %.cpp
 	$(CC) -c $(CPPFLAGS) $< -o $@
 
 clean :
-	rm -f tictactoe *.o
+	rm -f metatictactoe *.o

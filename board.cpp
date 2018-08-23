@@ -365,6 +365,21 @@ void MetaBoard::Print()
 
 MyBoard * MetaBoard::FindGame(int x)
 {
-	return games[x - 1]
+	return games[x - 1];
+}
+
+/* This function will be used in conjunction with checking to see if the input is an integer
+in order to see if the player has put a correct input (an integer between 1 and 9) */
+bool ValidMove(int x)
+{
+	if (x < 1 || x > 9)
+	{
+		return false;
+	}
+	
+	else
+	{
+		return true;
+	}
 }
 

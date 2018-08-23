@@ -1,25 +1,10 @@
+#ifndef METAGAMEHPP
+#define METAGAMEHPP
 #include "metagame.hpp"
-#include <iostream>
-#include <string>
-#include <stdio.h>
-#include <stdlib.h>
+#endif
+
 
 using namespace std;
-
-/* This function will be used in conjunction with checking to see if the input is an integer
-in order to see if the player has put a correct input (an integer between 1 and 9) */
-bool ValidMove(int x)
-{
-	if (x < 1 || x > 9)
-	{
-		return False
-	}
-	
-	else
-	{
-		return True
-	}
-}
 
 /* This is the constructor for this class. It initializes the game so that
 x has the first move, and initializes the particular board to be used in 
@@ -61,7 +46,7 @@ void Game::Run()
 		{
 			board->Print();
 			cin.clear();
-			cin.ignore(10000, '\n')
+			cin.ignore(10000, '\n');
 			cout << "Please select an active board in the range (1 - 9):" << endl;
 			continue;
 		}
@@ -79,7 +64,7 @@ void Game::Run()
 		
 		/* This handles when an individual board gets full, but it is the active board. 
 		A new active board is selected. */
-		while(board.FindGame(active_board)->CheckDraw() == 1 && board->CheckDraw()
+		while(board->FindGame(active_board)->CheckDraw() == 1 && board->CheckDraw()
 			!= 1)
 		{
 			cout << "The active board is full. Please select a new active board (1-9):" << endl;
@@ -91,13 +76,13 @@ void Game::Run()
 				cout << "The active board is: " << active_board << endl;
 				board->BoardsWon();
 				cin.clear();
-				cin.ignore(10000, '\n')
+				cin.ignore(10000, '\n');
 				continue;
 			}
 			else
 			{
 				active_board = new_active;
-				if(board.FindGame(active_board)->CheckDraw() == 1 && board->CheckDraw()
+				if(board->FindGame(active_board)->CheckDraw() == 1 && board->CheckDraw()
 				   != 1)
 				{
 					board->Print();
@@ -115,12 +100,12 @@ void Game::Run()
 			board->Print();
 			cout << "Please pick a square in the range (1 - 9)" << endl;
 			cin.clear();
-			cin.ignore(10000, '\n')
+			cin.ignore(10000, '\n');
 			continue;
 		}
 
-		if (board.FindGame(active_board)->Query(square_choice - 1) == 'X' 
-			|| board.FindGame(active_board)->Query(square_choice - 1) == 'O')
+		if (board->FindGame(active_board)->Query(square_choice - 1) == 'X' 
+			|| board->FindGame(active_board)->Query(square_choice - 1) == 'O')
 		{
 			board->Print();
 			cout << "That move has already been made! Pick a new one." << endl;
@@ -130,16 +115,16 @@ void Game::Run()
 
 		else
 		{
-			board.FindGame(active_board)->Place(square_choice - 1, turn);
+			board->FindGame(active_board)->Place(square_choice - 1, turn);
 			// This makes a move for whomever's turn it is.
 		}
 
 		board->Print();
 		// This prints the board state, note it is after the move has been made
-		if (board.FindGame(active_board)->winner != 'X' &&
-			board.FindGame(active_board)->winner != 'O')
+		if (board->FindGame(active_board)->winner != 'X' &&
+			board->FindGame(active_board)->winner != 'O')
 		{
-			if (board.FindGame(active_board)->CheckWin() == 1)
+			if (board->FindGame(active_board)->CheckWin() == 1)
 			{
 					cout << "Board number " << active_board << " has been won by: " << turn << endl;
 					if (turn == 'X')
@@ -151,7 +136,7 @@ void Game::Run()
 						board->owins++;
 					}
 
-					board.FindGame(active_board)->winner = turn;
+					board->FindGame(active_board)->winner = turn;
 				
 			}
 		}
@@ -193,7 +178,7 @@ void Game::Run()
 			turn = 'X';
 		}
 
-		active_board = i;
+		active_board = square_choice;
 
 		cout << "The active board is: " << active_board << endl;
 		

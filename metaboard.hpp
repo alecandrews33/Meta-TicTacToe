@@ -31,4 +31,7 @@ public:
 	void BoardsWon();
 	~MetaBoard();
 	MetaBoard();
+	MyBoard * FindGame(int x);
 };
+
+bool ValidMove(int x);
